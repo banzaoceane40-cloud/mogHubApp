@@ -1,6 +1,5 @@
-import {ScrollView, View, Text, TextInput, StyleSheet, Image} from "react-native";
-import {StatusBar} from "expo-status-bar";
-import {useState} from "react";
+import {StyleSheet} from "react-native";
+
 
 
 const styles =StyleSheet.create({
@@ -39,6 +38,42 @@ const styles =StyleSheet.create({
     userInputTxt:{
         borderBottomWidth: 1
     },
+
+    radioContainer: {
+        flex: 0,
+        backgroundColor: "yellow",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+
+    radioGroup: {
+        flexDirection: "column",
+        justifyContent: "space-around",
+        alignItems: "center",
+        marginTop: 20,
+        borderRadius: 10,
+        backgroundColor: "white",
+        padding: 15,
+        elevation:  5,
+        shadowColor: "grey",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 5,
+    },
+
+    radioBtn: {
+        flexDirection: "column",
+        alignItems: "center",
+    },
+
+    radioLabel: {
+        marginLeft: 5,
+        fontSize: 5,
+        color: "black"
+    }
 })
 
 export default styles;

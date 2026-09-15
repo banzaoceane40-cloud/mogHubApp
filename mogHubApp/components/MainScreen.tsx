@@ -1,18 +1,21 @@
-import {ScrollView, View, Text, TextInput, StyleSheet, Image} from "react-native";
+import {ScrollView, View, Text, TextInput, StyleSheet, Image, SafeAreaView} from "react-native";
 import {StatusBar} from "expo-status-bar";
 import {useState} from "react";
-import Styles from "./Styles"
+import styles from "./Styles";
+import {RadioButton} from "react-native-paper";
 
 function MainScreen(){
     const [petName, setName] = useState("");
+    const [selectedValue, setSelectedValue]= useState("0");
 
     return(
         <View>
+            <SafeAreaView>
             <ScrollView>
                 <Image style={styles.mogHubLogo}
-                source={require("../_images/catPic.avif")}/>
+                source={require("../_images/catImage.jpeg")}/>
                 <Text style={styles.mainTxt}>Mog Hub</Text>
-                <Text style={styles.slogan}>Purrfect Companions</Text>
+                <Text style={styles.slogan}>P u r r f e c t  C o m p a n i o n s</Text>
 
                 <View style={styles.inputFlex}>
                     <Text style={styles.enterTxt}>Name Your Pet</Text>
@@ -23,49 +26,60 @@ function MainScreen(){
                     />
                 </View>
 
+                <View style={{alignItems: "center", justifyContent: "center"}}>
+                    <Text style={{fontWeight: "bold", fontSize: 18}}>
+                        Select Your Pet:
+                    </Text>
+
+                    <View style={styles.radioContainer}>
+                        <View style={styles.radioGroup}>
+                            {/* {radio button for cat} */}
+                            <View style={styles.radioBtn}>
+                                <RadioButton.IOS
+                                    value="1"
+                                    status={selectedValue == "1" ? "checked" : "unchecked"}
+                                    onPress={() => setSelectedValue("1")}
+                                    color="orange"
+                                />
+                                <Text style={styles.radioLabel}>Cat</Text>
+                            </View>
+
+                             {/* {radio button for dog} */}
+                             <View style={styles.radioBtn}>
+                                 <RadioButton.IOS
+                                    value="2"
+                                    status={selectedValue == "2" ? "checked" : "unchecked"}
+                                    onPress={() => setSelectedValue("2")}
+                                    color="orange"
+                                />
+                                <Text style={styles.radioLabel}>Dog</Text>
+                            </View>
+
+                             {/* {radio button for other} */}
+                             <View style={styles.radioBtn}>
+                                 <RadioButton.IOS
+                                    value="3"
+                                    status={selectedValue == "3" ? "checked" : "unchecked"}
+                                    onPress={() => setSelectedValue("3")}
+                                    color="orange"
+                                />
+                                <Text style={styles.radioLabel}>Other</Text>
+                            </View>
+
+                        </View>
+
+                    </View>
+                </View>
+
                 <StatusBar style="auto"/>
+
             </ScrollView>
+            </SafeAreaView>
         </View>
     )
 }
 
-const styles =StyleSheet.create({
-    mainTxt: {
-        paddingTop: 50,
-        color: "green",
-        fontWeight: "bold",
-        fontSize: 30,
-        textAlign: "center"
-    },
-    
-    slogan: {
-        color: "orange",
-        fontSize: 20,
-        textAlign: "center"
-    },
 
-    mogHubLogo: {
-        height: 350,
-        width: 350,
-        paddingTop: 25,
-        justifyContent: "center",
-        alignItems: "center"
-    },
-
-    inputFlex: {
-        flexDirection: "row",
-        marginTop: 25,
-        justifyContent: "space-evenly"
-    },
-
-    enterTxt: {
-        fontWeight: "bold",
-    },
-
-    userInputTxt: {
-        borderBottomWidth: 1
-    },
-})
 
 export default styles;
 
