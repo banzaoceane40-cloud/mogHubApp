@@ -1,6 +1,7 @@
 import {ScrollView, View, Text, TextInput, StyleSheet, Image} from "react-native";
 import {StatusBar} from "expo-status-bar";
 import {useState} from "react";
+import Styles from "./Styles"
 
 function MainScreen(){
     const [petName, setName] = useState("");
@@ -65,4 +66,6 @@ const styles =StyleSheet.create({
         borderBottomWidth: 1
     },
 })
+
+export default styles;
 
