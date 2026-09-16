@@ -1,12 +1,28 @@
-import {ScrollView, View, Text, TextInput, StyleSheet, Image, SafeAreaView} from "react-native";
+import {ScrollView, View, Text, TextInput, StyleSheet, Image, SafeAreaView, Button} from "react-native";
 import {StatusBar} from "expo-status-bar";
 import {useState} from "react";
 import styles from "./Styles";
 import {RadioButton} from "react-native-paper";
 
 function MainScreen(){
-    const [petName, setName] = useState("");
+    const [petName, setPetName] = useState("");
     const [selectedValue, setSelectedValue]= useState("0");
+    const [pet, setPet] = useState<string[]>([]);
+
+    const renderPets = () => {
+        const arrDisplay = [];
+
+        for(let i=0; i < pet.length; i++){
+            arrDisplay.push(
+                <View key={i} style={styles.inputContainer}>
+                     <Text style={styles.petTxt}>
+                          {pet[i]}
+                     </Text>
+                </View>
+            );
+        }
+        return arrDisplay;
+    }
 
     return(
         <View>
@@ -22,7 +38,7 @@ function MainScreen(){
                     <TextInput style={styles.userInputTxt}
                     placeholder="Mog"
                     value={petName}
-                    onChangeText={newText => setName(newText)}
+                    onChangeText={newText => setPetName(newText)}
                     />
                 </View>
 
@@ -70,9 +86,17 @@ function MainScreen(){
 
                     </View>
                 </View>
-
+                <Button title="Add Pet" 
+                   onPress={() => {
+                    setPet([...pet, petName]);
+                    setPetName("");
+                   }}
+                />
+                <View style={styles.petContainer}>
+                    {renderPets()}
+                </View>
                 <StatusBar style="auto"/>
-
+                  
             </ScrollView>
             </SafeAreaView>
         </View>

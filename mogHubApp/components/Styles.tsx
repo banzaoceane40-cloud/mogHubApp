@@ -73,6 +73,27 @@ const styles =StyleSheet.create({
         marginLeft: 5,
         fontSize: 5,
         color: "black"
+    },
+
+    inputContainer: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginVertical: 25,
+        borderBottomWidth: 1,
+        borderBottomColor: "#df1d1d"
+    },
+
+    petTxt: {
+        fontSize: 15,
+        marginVertical: 5,
+        borderBlockColor: "black",
+        borderBottomWidth: 1
+    },
+
+    petContainer: {
+        flex: 5
     }
 })
 
